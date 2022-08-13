@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var login = []
+        var senha = []
+        var login1
+        var senha1 = 0
+        var loginf
+        var senhaf = 0
+        var loginadm
+        var senhaadm = 0
+        var admin = "admin"
+        var senhadm = "admin"
+        var adm1
+        var adms1 = 0
+        var adm
+        var adms = 0
+        var contador = 0
+        var entrada = 0
+        var funcionario = 0
+        var cliente = 0
+        var cadastrarC = []
+        var cpfCliente = []
+        var telCliente = []
+        var cadAnimal = []
+        var raça = []
+        var cor = []
+        var tipo = []
+        var cadPro = []
+        var qntPro = []
+        var valorPro = []
+        var ps = 0
+        var chefe = 0
+        var reporP
+        var reporqnt = 0
+        var j = 0
+        var control
+        var cadForne = []
+        var cnpj = []
+        var endForne = []
+        var telForne = []
+        var consultF = 0
+        var fluxo = 0
+        var capitalI
+        var st
+        var venda = 0
+        var x = 0, b = 0
+        var vetfluxo = []
+        var pes = 0
+        var nc = []
+        var nA = []
+        var p
+        var c = 0
+        var cont = 0
+        var confirmahora = []
+        var veterinarios = []
+        var cpf = []
+        var telVeter = []
+
+        entrada = 0
+        while (entrada != 3) {
+            entrada = parseInt(prompt("Escolha a opção desejada: \n1- Entrar como Administrador \n2- Entrar como Funcionário \n3- Fechar Programa."))
+            switch (entrada) {
+                case 1:
+                    loginadm = prompt("LOGIN: ")
+                    senhaadm = prompt("SENHA: ")
+
+                    if ((loginadm == admin) && (senhaadm == senhadm)) {
+                        chefe = 0
+                        while (chefe != 6) {
+                            chefe = parseInt(prompt("1- PRODUTOS/SERVIÇOS \n2- FORNECEDORES \n3- VETERINÁRIOS \n4- ENTRADA/SÁIDA FUNCIONÁRIOS \n5- FLUXO DE CAIXA \n 6- VOLTAR "))
+                            switch (chefe) {
+                                case 1:
+                                    ps = 0
+                                    while (ps != 6) {
+                                        ps = parseInt(prompt("1- CADASTRAR PRODUTOS/SERVIÇOS \n2- REMOVER PRODUTOS \n3- REPOSIÇÃO DE ESTOQUE \n4- REMOÇÃO DE ESTOQUE \n5- CONTROLE DE ESTOQUE \n6- VOLTAR"))
+                                        switch (ps) {
+                                            case 1:
+
+                                                cadPro.push(prompt("INFORME O NOME DO PRODUTO/SERVIÇO: "))
+                                                qntPro.push(parseInt(prompt("QUANTIDADE: ")))
+                                                valorPro.push(parseFloat(prompt("VALOR: ")))
+                                                var forner = prompt("INFORME O FORNECEDOR: ")
+                                                for (i = 0; i < cadForne.length; i++) {
+                                                    if (forner == cadForne[i]) {
+
+                                                        alert("CADASTRO CONCLUÍDO [✔]")
+                                                    }
+                                                }
+                                                break;
+                                            case 2:
+                                                for (i = 0; i < 1; i++) {
+                                                    alert("PRODUTO: " + cadPro)
+                                                }
+                                                var removp = prompt("INFORME O PRODUTO PARA SER REMOVIDO: ")
+                                                for (i = 0; i < cadPro.length; i++) {
+                                                    if (removp == cadPro[i]) {
+                                                        cadPro.splice(i, 1)
+                                                        qntPro.splice(i, 1)
+                                                        valorPro.splice(i, 1)
+                                                        alert("REMOÇÃO CONCLUÍDA [✔]")
+                                                    }
+                                                } break;
+                                            case 3:
+                                                for (i = 0; i < 1; i++) {
+                                                    alert("PRODUTO: " + cadPro)
+                                                }
+                                                reporP = prompt("INFORME O NOME DO PRODUTO PARA REPOSIÇÃO: ")
+
+                                                for (i = 0; i < cadPro.length; i++) {
+
+                                                    if (reporP == cadPro[i]) {
+                                                        reporqnt = parseInt(prompt("INFORME A QUANTIDADE A SER ACRESENTADA: "))
+                                                        qntPro[i] += reporqnt
+                                                        fluxo = fluxo - (reporqnt * valorPro[i])
+                                                        console.log("repor" + fluxo)
+                                                        x++;
+                                                        alert("NOVA QUANTIDADE: " + qntPro[i])
+                                                        alert("ALTERAÇÃO CONCLUÍDA [✔]")
+                                                    }
+                                                }
+                                                for (i = 0; i < x + b + c; i++) {
+                                                    vetfluxo.push(fluxo)
+                                                }
+
+
+                                                break;
+                                            case 4:
+                                                for (i = 0; i < 1; i++) {
+                                                    alert("PRODUTOS: " + cadPro)
+                                                }
+                                                var remove1 = prompt("INFORME O NOME DO PRODUTO: ")
+                                                for (i = 0; i < qntPro.length; i++) {
+                                                    if (remove1 == cadPro[i]) {
+                                                        var remove = parseInt(prompt("INFORME A QUANTIDADE Á SER RETIRADA: "))
+                                                        qntPro[i] -= remove
+                                                        alert("REMOÇÃO CONCLUÍDA [✔]")
+                                                        var pergunt = prompt("DESEJA ACRESENTAR O VALOR NO FLUXO DE CAIXA: [s/n]")
+                                                        if (pergunt == "s") {
+                                                            var venda1 = remove * valorPro[i]
+                                                            fluxo = fluxo + venda1
+                                                            c++
+                                                            vetfluxo.push(fluxo)
+                                                        }
+                                                    }
+                                                } break;
+                                            case 5:
+                                                for (i = 0; i < 1; i++) {
+                                                    alert("PRODUTOS: " + cadPro)
+                                                    alert()
+                                                }
+                                                control = prompt("INFORME O PRODUTO PARA CONSULTA: ")
+                                                for (i = 0; i < cadPro.length; i++) {
+                                                    if (control == cadPro[i]) {
+                                                        alert("PRODUTO: " + cadPro[i] + "\nQUANTIDADE: " + qntPro[i] + "\nVALOR: R$" + valorPro[i] + " \nFORNECEDOR: " + cadForne[i])
+                                                    }
+                                                }
+                                                break;
+                                        }
+                                    } break;
+                                case 2:
+                                    var forne = 0
+                                    while (forne != 4) {
+                                        forne = parseInt(prompt("1- CADASTRAR FORNECEDORES \n2- CONSULTAR FORNCEDORES \n3- REMOVER FORNECEDORES \n4- VOLTAR"))
+                                        switch (forne) {
+                                            case 1:
+
+                                                cadForne.push(prompt("NOME DO FORNECEDOR: "))
+                                                cnpj.push(prompt("CNPJ: "))
+                                                telForne.push(prompt("TELEFONE: "))
+                                                endForne.push(prompt("ENDEREÇO: "))
+
+
+                                                alert("CADASTRO CONCLUÍDO [✔]")
+                                                break;
+                                            case 2:
+                                                for (i = 0; i < 1; i++) {
+                                                    alert("FORNECEDORES: " + cadForne)
+                                                }
+                                                consultF = prompt("INFORME O NOME DO FORNECEDOR: ")
+                                                for (i = 0; i < cadForne.length; i++) {
+                                                    if (consultF == cadForne[i]) {
+                                                        alert("FORNECEDOR: " + cadForne[i] + " \nCNPJ: " + cnpj[i] + " \nTELEFONE: " + telForne[i] + " \nENDEREÇO: " + endForne[i])
+                                                    }
+                                                } break;
+                                            case 3:
+                                                for (i = 0; i < 1; i++) {
+                                                    alert("FORNECEDORES: " + cadForne)
+                                                }
+                                                var removF = prompt("INFORME O FORNECEDOR PARA REMOÇÃO: ")
+                                                for (i = 0; i < cadForne.length; i++) {
+                                                    if (removF == cadForne[i]) {
+                                                        cadForne.splice(i, 1)
+                                                        cnpj.splice(i, 1)
+                                                        telForne.splice(i, 1)
+                                                        endForne.splice(i, 1)
+                                                        alert("REMOÇÃO CONCLUÍDA [✔]")
+                                                    }
+                                                }
+
+                                                break;
+                                        }
+                                    } break;
+                                case 3:
+                                    var veter = 0
+                                    while (veter != 4) {
+                                        veter = parseInt(prompt("1- CADASTRAR VETERINÁRIOS \n2- CONSULTAR VETERINÁRIOS \n3- REMOVER VETERINÁRIOS \n4- VOLTAR"))
+                                        switch (veter) {
+                                            case 1:
+
+                                                veterinarios.push(prompt("INFORME O NOME DO NOVO VETERINÁRIO(A): "))
+                                                cpf.push(prompt("CPF: "))
+                                                telVeter.push(prompt("TELEFONE: "))
+
+                                                alert("CADASTRO CONCLUÍDO [✔]")
+                                                break;
+                                            case 2:
+                                                for (i = 0; i < 1; i++) {
+                                                    alert("VETERINÁRIOS: " + veterinarios)
+                                                }
+                                                var consultV = prompt("INFORME O NOME DO VETERINÁRIOS: ")
+                                                for (i = 0; i < veterinarios.length; i++) {
+                                                    if (consultV == veterinarios[i]) {
+                                                        alert("VETERINÁRIOS: " + veterinarios[i] + " \nCPF: " + cpf[i] + " \nTELEFONE: " + telVeter[i])
+                                                    }
+                                                } break;
+                                            case 3:
+                                                for (i = 0; i < 1; i++) {
+                                                    alert("VETERINÁRIOS: " + veterinarios)
+                                                }
+                                                var remov = prompt("INFORME O NOME DO VETERINÁRIO PARA REMOÇÃO: ")
+                                                for (i = 0; i < veterinarios.length; i++) {
+                                                    if (remov == veterinarios[i]) {
+                                                        veterinarios.splice(i, 1)
+                                                        cpf.splice(i, 1)
+                                                        telVeter.splice(i, 1)
+                                                        alert("REMOÇÃO CONCLUÍDA [✔]")
+                                                    }
+                                                }
+
+                                                break;
+                                        }
+                                    }
+
+
+                                    break;
+                                case 4:
+                                    cad = 0
+                                    while (cad != 3) {
+                                        var cad = parseInt(prompt("1- CADASTRAR \n2- REMOVER \n3- VOLTAR "))
+                                        if (cad == 1) {
+                                            login.push(prompt("INFORME O NOVO LOGIN DO USUÁRIO: "))
+                                            senha.push(prompt("INFORME A NOVA SENHA DO USUÁRIO: "))
+                                            alert("Cadastrando...")
+                                            alert("CADASTRO CONCLUÍDO [✔]")
+                                        }
+                                        if (cad == 2) {
+                                            for (i = 0; i < 1; i++) {
+                                                alert("FUNCIONÁRIOS: " + login)
+                                            }
+                                            var removfunc = prompt("INFORME O NOME DO FUNCIONÁRIO: ")
+                                            for (i = 0; i < login.length; i++) {
+                                                if (removfunc == login[i]) {
+                                                    login.splice(i, 1)
+                                                    senha.splice(i, 1)
+                                                    alert("REMOÇÃO CONCLUÍDA [✔]")
+                                                }
+                                            }
+
+                                        }
+                                    } break;
+                                case 5:
+                                    capitalI = prompt("DESEJA INICIAR UM NOVO CAPITAL INICIAL? S/N")
+                                    if (capitalI == "S") {
+                                        var fluxo = parseInt(prompt("QUAL O VALOR? "))
+                                        console.log("fluxo inicial " + fluxo)
+                                    }
+                                    if (capitalI == "N") {
+                                        alert(vetfluxo)
+                                    } break;
+                            }
+                        }
+                    } else {
+                        alert("LOGIN INVÁLIDO [✖]")
+                    }
+                    break;
+
+                case 2:
+                    loginf = prompt("LOGIN: ")
+                    senhaf = prompt("SENHA: ")
+                    for (i = 0; i < 2; i++) {
+                        if ((loginf == login[i]) && (senhaf == senha[i])) {
+                            funcionario = 0
+                            while (funcionario != 5) {
+                                funcionario = parseInt(prompt("1- CADASTRAR \n2- VENDA DE PRODUTOS/SERVIÇOS \n3- MARCAR CONSULTAS \n4- PESQUISAR \n5- VOLTAR"))
+                                switch (funcionario) {
+                                    case 1:
+                                        cliente = 0
+                                        while (cliente != 3) {
+                                            cliente = parseInt(prompt("1- CADASTRAR CLIENTE \n2- CADASTRAR ANIMAL \n3- VOLTAR"))
+                                            switch (cliente) {
+                                                case 1:
+                                                    cadastrarC.push(prompt("INFORME O NOME DO CLIENTE: "))
+                                                    cpfCliente.push(prompt("CPF: "))
+                                                    telCliente.push(prompt("TELEFONE: "))
+
+                                                    break;
+                                                case 2:
+                                                    cliente1 = prompt("INFORME O NOME DO DONO DO ANIMAL: ")
+                                                    if (cliente1 == cadastrarC[i]) {
+                                                        alert("NOME VÁLIDO!")
+                                                        cadAnimal.push(prompt("INFORME O NOME DO ANIMAL: "))
+                                                        tipo.push(prompt("TIPO: ex.(cachorro, gato, coelho, pássaro etc.) "))
+                                                        raça.push(prompt("RAÇA: "))
+                                                        cor.push(prompt("COR: "))
+                                                    } else {
+                                                        for (i = 0; i < 2; i++) {
+                                                            alert("NOME INVÁLIDO!")
+
+                                                        }
+
+                                                    }
+
+                                                    break;
+                                            }
+
+                                        } break;
+                                    case 2:
+                                        for (i = 0; i < 1; i++) {
+                                            alert("PRODUTOS: " + cadPro)
+                                        }
+                                        var vproduto = prompt("INFORME O PRODUTO OU SERVIÇO PARA VENDA: ")
+                                        for (i = 0; i < cadPro.length; i++) {
+                                            if (vproduto == cadPro[i]) {
+                                                var qntvenda = parseInt(prompt("QUANTIDADE: "))
+                                                if (qntvenda > qntPro[i]) {
+                                                    alert("QUANTIDADE INDISPONÍVEL!")
+                                                } else {
+                                                    qntPro[i] -= qntvenda
+                                                    venda = qntvenda * valorPro[i]
+                                                    fluxo = fluxo + venda
+                                                    b++
+
+
+                                                    alert("O TOTAL DA VENDA: " + venda)
+                                                }
+
+
+                                            }
+                                        }
+
+                                        vetfluxo.push(fluxo)
+                                        break;
+                                    case 3:
+                                        var y = 0
+                                        while (y != 4) {
+                                            y = parseInt(prompt("QUAL A OPÇÃO DESEJADA: \n1- MARCAR CONSULTAS \n2- BANHO E TOSA \n 3- HOSPEDAGEM \n 4- VOLTAR"))
+                                            switch (y) {
+                                                case 1:
+                                                    var teste = prompt("O ANIMAL JÁ ESTÁ CADASTRADO ? [sim/não]")
+                                                    if (teste === "sim") {
+                                                        alert(cadAnimal)
+                                                        confirmahora.push(parseInt(prompt("DIGITE O HORÁRIO DA CONSULTA: \nHORÁRIOS DISPONÍVEIS PARA CONSULTAS : 11:30h, 12:00h, 16:00h, 16:30h, 18:00h ")))
+                                                        var consulta3 = prompt("DESEJA MARCAR A CONSULTA COM QUAL VETERINÁRIO(A) ? \nVETERINÁRIOS(A) DISPONÍVEIS: " + veterinarios)
+                                                        for (i = 0; i < veterinarios.length; i++) {
+                                                            if (consulta3 == veterinarios[i]) {
+                                                                for (i = 0; i < cadAnimal.length; i++) {
+                                                                    alert("CONFIRA OS DADOS : \nNOME DO ANIMAL : " + cadAnimal[i] + "\nVETERINÁRIO : " + veterinarios[i] + "\nHORÁRIO : " + confirmahora[i])
+                                                                }
+
+                                                                var consulta = prompt("DESEJA MARCAR A CONSULTA ? [sim/não]")
+                                                                if (consulta === "sim") {
+                                                                    cont++
+                                                                    alert("CONSULTA MARCADA [✔]")
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+
+                                                    } if (teste === "não") {
+                                                        var cliente2 = prompt("INFORME O NOME DO DONO DO ANIMAL: ")
+                                                        for (i = 0; i < 2; i++) {
+                                                            if (cliente2 == cadastrarC[i]) {
+                                                                alert("NOME VÁLIDO!")
+                                                                cadAnimal.push(prompt("INFORME O NOME DO ANIMAL: "))
+                                                                tipo.push(prompt("TIPO: ex.(cachorro, gato, coelho, pássaro etc.) "))
+                                                                raça.push(prompt("RAÇA: "))
+                                                                cor.push(prompt("COR: "))
+                                                            } else {
+                                                                for (i = 0; i < 2; i++) {
+                                                                    alert("NOME INVÁLIDO!")
+
+                                                                }
+                                                            }
+                                                        }
+
+                                                        confirmahora.push(parseInt(prompt("INFORME O HORÁRIO DA CONSULTA: \nHORÁRIOS DISPONÍVEIS PARA CONSULTA : 11:30h, 12:00h, 16:00h, 16:30h, 18:00h")))
+                                                        var consulta1 = prompt("DESEJA MARCAR A CONSULTA COM QUAL VETERINÁRIO(A) ? \nVETERINÁRIOS(A) DISPONÍVEIS: " + veterinarios)
+                                                        if (consulta1 == veterinarios[i]) {
+                                                            alert("CONFIRA OS DADOS: \nNOME DO ANIMAL : " + cadAnimal[i] + "\nNOME DO DONO: " + cadastrarC[i] + "\nVETERINÁRIO(A): " + veterinarios[i] + " HORÁRIO: " + confirmahora[i])
+                                                            consulta = prompt("DESEJA MARCAR A COSULTA ? [sim/não]")
+                                                            if (consulta === "sim") {
+                                                                cont++
+                                                                alert("CONSULTA MARCADA [✔]")
+
+                                                            } else {
+                                                                alert("RETORNANDO...")
+                                                            }
+                                                        }
+
+                                                    } break;
+                                                case 2:
+                                                    for (i = 0; i < cadPro.length; i++) {
+                                                        if (cadPro[i] == "banho e tosa") {
+                                                            var valorbt = qntPro[i] * valorPro[i]
+                                                            alert("O VALOR DO BANHO E TOSA É: R$" + valorbt)
+                                                            var confirmatosa = prompt("DESEJA MARCAR ? [sim/não]")
+                                                            if (confirmatosa === "sim") {
+                                                                fluxo += valorbt
+                                                                vetfluxo.push(fluxo)
+                                                                alert("BANHO E TOSA MARCADA [✔] ")
+                                                            } else {
+                                                                alert("RETORNANDO...")
+                                                            }
+
+                                                        }
+                                                    } break;
+                                                case 3:
+                                                    for (i = 0; i < cadPro.length; i++) {
+                                                        if (cadPro[i] == "hospedagem") {
+                                                            var valorh = qntPro[i] * valorPro[i]
+                                                            alert("O VALOR DA HOSPEDAGEM É: R$" + valorh)
+                                                            confirmahospedagem = prompt("DESEJA MARCAR ? [sim/não] ")
+                                                            if (confirmahospedagem === "sim") {
+                                                                fluxo += valorh
+                                                                vetfluxo.push(fluxo)
+                                                                alert("BANHO E TOSA MARCADA [✔]")
+                                                            } else {
+                                                                alert("RETORNANDO...")
+                                                            }
+                                                            break;
+                                                        }
+                                                    }break;
+                                            }
+                                        }
+                                    case 4:
+
+                                        pes = 0
+                                        while (pes != 4) {
+
+                                            pes = parseInt(prompt(" 1- FICHA DO CLIENTE\n  2- FICHA DO ANIMAL\n 3- PESQUISAR PRODUTO\n 4-VOLTAR"))
+                                            switch (pes) {
+                                                case 1:
+                                                    for (i = 0; i < 1; i++) {
+                                                        alert("CLIENTES: " + cadastrarC)
+                                                    }
+                                                    nc = prompt("DIGITE O NOME DO CLIENTE: ")
+                                                    for (i = 0; i < cadastrarC.length; i++) {
+                                                        if (nc == cadastrarC[i]) {
+                                                            alert("NOME VÁLIDO [✔] ")
+                                                            alert("NOME DO CLIENTE: " + cadastrarC[i] + "\n CPF: " + cpfCliente[i] + "\n CONTATO: " + telCliente[i])
+
+                                                        } else {
+                                                            alert("NOME INVÁLIDO [✖]  ")
+                                                        }
+                                                    }
+
+                                                    break;
+                                                case 2:
+                                                    for (i = 0; i < 1; i++) {
+                                                        alert("NOME DOS ANIMAIS: " + cadAnimal)
+                                                    }
+                                                    nA = prompt("DIGITE O NOME DO ANIMAL: ")
+                                                    for (i = 0; i < cadAnimal.length; i++) {
+                                                        if (nA == cadAnimal[i]) {
+                                                            alert("NOME VÁLIDO [✔] ")
+                                                            alert("NOME DO DONO: " + cadastrarC[i] + "\n NOME DO ANIMAL: " + cadAnimal[i] + "\n RAÇA DO ANIMAL: " + raça[i] + "\n COR DO ANIMAL: " + cor[i] + "\n GENÊRO DO ANIMAL: " + tipo[i])
+
+
+                                                        } else {
+                                                            alert("NOME INVÁLIDO [✖] ")
+
+
+                                                        }
+
+                                                    } break;
+                                                case 3:
+                                                    for (i = 0; i < 1; i++) {
+                                                        alert("PRODUTOS: " + cadPro)
+                                                    }
+                                                    p = prompt("DIGITE O NOME DO PRODUTO: ")
+                                                    for (i = 0; i < cadPro.length; i++) {
+                                                        if (p == cadPro[i]) {
+                                                            alert("PRODUTO VÁLIDO [✔]")
+                                                            alert("NOME DO PROUTO: " + cadPro[i] + "\n QUANTIDADE:" + qntPro[i] + "\n PREÇO: " + valorPro[i])
+                                                        } else {
+                                                            alert("PRODUTO NÃO CADASTRADO [✖] ")
+                                                        }
+                                                    } break;
+                                            }
+                                        } break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                }
+                            }
+
+                        }
+                    }
+
+
+                    break;
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
